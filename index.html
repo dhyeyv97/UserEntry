@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Task</title>
+    <link rel="stylesheet" href="newtask.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-box">
+            <div class="alertBox">
+           
+            </div>
+               <div class="record-btn">
+            <button type="button" class="btn btn-primary btn-add" id="addRecord">
+                Add Records
+            </button>
+        </div>
+    </div>
+        <div class="row">
+            <table class="table table-dark table-striped" id="tables">
+                <thead>
+                    <tr>
+                        <th class="th-head" scope="col">#</th>
+                        <th class="th-head" scope="col">Name</th>
+                        <th class="th-head" scope="col">E-mail</th>
+                        <th class="th-head" scope="col">Age</th>
+                        <th class="th-head action" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dhyey</td>
+                        <td>dhyey97@gmail.com</td>
+                        <td>25</td>
+                        <td>
+                            <button id="editRecord" type="button" class="btn btn-info btn-edit mx-2">
+                                Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-del">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <section id="modal1">
+        <div class="modalAdd" id="exampleModal">
+                <div class="modal-contentA" id="addContent">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Users</h5>
+                        <button type="button" class="btn-close" id="closebtn"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group main-input">
+
+                                        <div id="name">
+                                            <div class="name-inp">
+                                                <div class="div-lab-1">
+                                                    <label class="lab-1" for="nameLab"> Name</label>
+                                                </div>
+                                                <input type="text" class="form-control" id="nameLab"
+                                                    placeholder="Recipient's Name"
+                                                    aria-label="Recipient's username with two button addons"
+                                                    aria-describedby="button-addon4" required />
+                                                <input type="hidden" id="saveindex" />
+                                                <button id="minusName" class="btn btn-outline-danger" type="button">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="formError"></div>
+                                        </div>
+
+                                        <div id="email">
+                                        <div class="em-inp my-2">
+                                            <div class="div-lab-1">
+                                                <label class="lab-1" for="emLab"> Email</label>
+                                            </div>
+                                            <input type="email" class="form-control" id="emLab"
+                                                placeholder="Recipient's E-mail"
+                                                aria-label="Recipient's username with two button addons"
+                                                aria-describedby="button-addon4" required />
+                                            <input type="hidden" id="saveindex" />
+                                            <button id="minusEmail" class="btn btn-outline-danger" type="button">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="formError"></div>
+                                        </div>
+
+                                        <div id="age">
+                                        <div class="age-inp">
+                                            <div class="div-lab-age">
+                                                <label class="lab-1" for="ageLab"> Age</label>
+                                            </div>
+                                            <input type="text" class="form-control" id="ageLab"
+                                                placeholder="Recipient's Age"
+                                                aria-label="Recipient's username with two button addons"
+                                                aria-describedby="button-addon4" required />
+                                            <input type="hidden" id="saveindex" />
+                                            <button id="minusAge" class="btn btn-outline-danger" type="button">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="formError"></div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="closeSub" class="btn btn-secondary">
+                            Close
+                        </button>
+                        <button id="submit1" type="button" method="post"
+                            class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+
+    <section id="modal2">
+        <div class="modalEdit" id="exampleModalEdit">
+                <div class="modal-contentE">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit User Info</h5>
+                        <button type="button" class="btn-close" id="edClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group main-input" id="input-id">
+
+                                        <div id="nameE">
+                                        <div class="name-inp">
+                                            <div class="div-lab-1">
+                                                <label class="lab-1" for="nameLab"> Name</label>
+                                            </div>
+                                            <input type="text" class="form-control" id="nameEd"
+                                                placeholder="Recipient's Name"
+                                                aria-label="Recipient's username with two button addons"
+                                                aria-describedby="button-addon4" />
+                                            <input type="hidden" id="saveindex" />
+                                            <button id="minusNames" class="btn btn-outline-danger" type="button">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="formError"></div>
+                                        </div>
+
+                                        <div id="emailE">
+                                        <div class="em-inp my-2">
+                                            <div class="div-lab-1">
+                                                <label class="lab-1" for="email"> Email</label>
+                                            </div>
+                                            <input type="email" class="form-control" id="emEd"
+                                                placeholder="Recipient's E-mail"
+                                                aria-label="Recipient's username with two button addons"
+                                                aria-describedby="button-addon4" />
+                                            <input type="hidden" id="saveindex" />
+                                            <button id="minusEmails" class="btn btn-outline-danger" type="button">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="formError"></div>
+                                        </div>
+
+                                        <div id="ageE">
+                                        <div class="age-inp">
+                                            <div class="div-lab-age">
+                                                <label class="lab-1" for="ageEd"> Age</label>
+                                            </div>
+                                            <input type="text" class="form-control" id="ageEd"
+                                                placeholder="Recipient's Age"
+                                                aria-label="Recipient's username with two button addons"
+                                                aria-describedby="button-addon4" />
+                                            <input type="hidden" id="saveindex" />
+                                            <button id="minusAges" class="btn btn-outline-danger" type="button">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="formError"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" id="modfut">
+                        <button type="button" id="closeEd" class="btn btn-secondary">
+                            Close
+                        </button>
+                        <button id="save1" type="button"  class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+
+    <!--Delete Modal-->
+
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Delete Confirmation
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are You Sure You Want to Delete Details ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="deleteCnf" data-bs-dismiss="modal" class="btn btn-danger">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Success Modal-->
+
+
+
+<!-- The Modal -->
+<div id="myModalSuccess" class="modalSuccess">
+
+  <!-- Modal content -->
+  <div class="modalS-content">
+    <div class="modalS-header">
+     <p class="successAlert" id="successAlert">Data Added Successfully!!</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+    <!-- <script src="newtask.js"></script> -->
+    <!-- <script src="addtask.js/addtask.js"></script>
+    <script src="addtask.js/edittask.js"></script>
+    <script src="addtask.js/deletetask.js"></script> -->
+    <script src="newJquery.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+</html>
